@@ -78,8 +78,13 @@ class ResumeBuilder:
             self.pdf.cell(200, 5, text=edu.degree, new_x="LMARGIN", new_y="NEXT")
             self.pdf.set_font("arial", size=12)
             self.edu_row(edu, gap=6)
-            self.pdf.set_font("arial", size=12)
-            self.pdf.cell(200, 5, text=f"GPA: {edu.gpa}", new_x="LMARGIN", new_y="NEXT")
+
+            if edu.gpa is not None:
+                self.pdf.set_font("arial", size=12)
+                self.pdf.cell(
+                    200, 5, text=f"GPA: {edu.gpa}", new_x="LMARGIN", new_y="NEXT"
+                )
+
             self.pdf.ln(3)
 
     def experience_details(self):
@@ -88,7 +93,7 @@ class ResumeBuilder:
         self.title(title="Experience")
 
         for exp in self.experience:
-            self.pdf.set_font("arial", size=14, style="B")
+            self.pdf.set_font("arial", size=12, style="B")
             self.pdf.cell(0, 6, text=exp.company.role, new_x="LMARGIN", new_y="NEXT")
             gap = 6
             self.experience_row(exp, gap)
@@ -167,7 +172,7 @@ class ResumeBuilder:
 
     def certification_details(self):
 
-        if self.certifications is None:
+        if self.certifications is None or len(self.certifications) == 0:
             return
 
         self.title(title="Cerfitications")
