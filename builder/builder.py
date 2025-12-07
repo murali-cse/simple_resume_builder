@@ -1,6 +1,11 @@
-from model import Duration
+from pathlib import Path
 from fpdf import FPDF, XPos, YPos, Align
-from model import UserDetails, ExpericeDetails, EducationDetails, ProjectDetails
+from app.schema.model import (
+    UserDetails,
+    ExperienceDetails,
+    EducationDetails,
+    ProjectDetails,
+)
 
 
 class ResumeBuilder:
@@ -8,7 +13,7 @@ class ResumeBuilder:
         self,
         details: UserDetails,
         education: list[EducationDetails],
-        experience: list[ExpericeDetails],
+        experience: list[ExperienceDetails],
         skills: list[str],
         certifications: list[str] | None = None,
         projects: list[ProjectDetails] | None = None,
@@ -16,12 +21,13 @@ class ResumeBuilder:
         self.pdf = FPDF()
         self.details: UserDetails = details
         self.education = education
-        self.experience: list[ExpericeDetails] = experience
+        self.experience: list[ExperienceDetails] = experience
         self.skills: list[str] = skills
         self.certifications: list[str] | None = certifications
         self.projects: list[ProjectDetails] | None = projects
-        # add arial font
-        self.pdf.add_font("arial", "", "./fonts/arial.ttf", uni=True)
+
+        FONT_PATH = Path(__file__).resolve().parent.parent / "assets/fonts/arial.ttf"
+        self.pdf.add_font("arial", "", str(FONT_PATH), uni=True)
 
     def generate_pdf(self, filename):
         self.pdf.add_page()
@@ -202,7 +208,7 @@ class ResumeBuilder:
         self.pdf.cell(200, 7, text=title.upper(), new_x="LMARGIN", new_y="NEXT")
         self.divider()
 
-    def experience_row(self, experience: ExpericeDetails, gap: int):
+    def experience_row(self, experience: ExperienceDetails, gap: int):
         font_size = 12
         border = 0
         self.pdf.set_font("arial", size=font_size, style="B")
