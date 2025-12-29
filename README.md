@@ -72,10 +72,12 @@ Here's what your generated resume will look like:
 
 2. **Generate your resume**:
    ```bash
-   python app.py
+   uvicorn app.main:app --reload
    ```
 
-3. **Find your resume**: The PDF will be generated as `resume.pdf` in the project directory
+3. **Access the API**:
+   - Open your browser and navigate to `http://127.0.0.1:8000/docs`
+   - You can now use the API to generate your resume
 
 ### Example Code
 
