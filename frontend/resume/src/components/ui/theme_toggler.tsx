@@ -14,7 +14,7 @@ export function ThemeToggler() {
     return (
         <div
             className="fixed bottom-5 right-5 h-12 w-12 rounded-full flex items-center justify-center
-                 bg-green-700 text-white cursor-pointer"
+                 bg-green-700 text-white cursor-pointer active:bg-green-700 active:scale-95"
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         >
             {theme === 'light' ? <Moon/> : <Sun/>}
