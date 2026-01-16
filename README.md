@@ -17,7 +17,7 @@ A clean and professional resume generator built with Python that creates ATS-fri
 - **Customizable**: Easy to modify fonts, spacing, and layout
 - **Type-Safe**: Uses Python type hints for better code quality
 
-## � Sample Output
+## Sample Output
 
 Here's what your generated resume will look like:
 
@@ -25,7 +25,7 @@ Here's what your generated resume will look like:
 
 📄 **[View Full PDF Sample](docs/sample.pdf)**
 
-## �📋 Prerequisites
+## 📋 Prerequisites
 
 - Python 3.10 or higher (uses modern type hints like `str | None`)
 - pip (Python package manager)
@@ -52,78 +52,29 @@ Here's what your generated resume will look like:
 3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
+   bash start.sh
    ```
-
-4. **Add Arial font**
-   - Create a `fonts` directory in the project root
-   - Add `arial.ttf` to the `fonts` folder
-   - (The font is required for proper rendering)
+4. **Open Browser & Navigate to below location**
+   ```bash
+   http://localhost:8000/
+   ```
+5. 
 
 ## 📖 Usage
 
 ### Basic Usage
 
-1. **Edit your information** in `app.py`:
+1. **Launch the site**:
    - Update contact details
    - Add your work experience
    - List your education
    - Include your skills
    - Add projects and certifications
 
-2. **Generate your resume**:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-
-3. **Access the API**:
+2. **Access the API**:
    - Open your browser and navigate to `http://127.0.0.1:8000/docs`
    - You can now use the API to generate your resume
 
-### Example Code
-
-```python
-from model import UserDetails, ContactDetails, ExpericeDetails, Company, Duration
-from builder import ResumeBuilder
-
-# Create contact details
-contact = ContactDetails(
-    email="your.email@example.com",
-    phone="+1-234-567-8901",
-    linkedin="linkedin.com/in/yourprofile",
-    github="github.com/yourusername"
-)
-
-# Create user details
-details = UserDetails(name="Your Name".upper(), contact=contact)
-
-# Add experience
-experience = [
-    ExpericeDetails(
-        company=Company(
-            name="Company Name",
-            role="Your Role",
-            duration=Duration(start_year=2020, end_year="Present"),
-            location="City, State"
-        ),
-        achievements=[
-            "Achievement 1 with metrics and impact",
-            "Achievement 2 with quantifiable results"
-        ]
-    )
-]
-
-# Generate resume
-resume = ResumeBuilder(
-    details=details,
-    education=education,
-    experience=experience,
-    skills=skills,
-    certifications=certifications,
-    projects=projects
-)
-
-resume.generate_pdf("resume.pdf")
-```
 
 ## 📁 Project Structure
 

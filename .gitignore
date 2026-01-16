@@ -3,3 +3,6 @@ __pycache__
 .vscode
 venv
 .venv
+.resume
+.DS_Store
+**/.DS_Store
